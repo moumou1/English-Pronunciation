@@ -1,0 +1,143 @@
+<!DOCTYPE>
+<html>
+<head>
+     <title>Exercise</title>
+     <meta charset='utf-8' />
+     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+      {% load staticfiles %}
+      <link rel="stylesheet" href="{% static 'asset/css/main.css' %}">
+</head>
+<body>
+<script type="text/javascript">
+var infoBox; // 訊息 label
+var textBox; // 最終的辨識訊息 text input
+//var tempBox; // 中間的辨識訊息 text input
+var startStopButton; // 「辨識/停止」按鈕
+var final_transcript = ''; // 最終的辨識訊息的變數
+var recognizing = false; // 是否辨識中
+var compar = ''; //用來比對的標準答案
+var final_answer = ''; //使用者最後的答案
+var answer //最後作答的答案
+var history_record //全部使用者的辨識紀錄
+var hhh //使用者的辨識紀錄
+
+function startButton(event,string_ans) {
+  infoBox = document.getElementById("info"); // 取得訊息控制項 infoBox
+  //tempBox = document.getElementById("temp"); // 取得中間的辨識訊息控制項 tempBox
+  textBox = document.getElementById("text"); // 取得最終的辨識訊息控制項 textBox
+  answer = document.getElementById("answer");
+  compar = string_ans;
+  history_record = document.getElementById("record");  
+  startStopButton = document.getElementById("startStopButton"); // 取得「辨識/停止」這個按鈕控制項
+  langCombo = document.getElementById("langCombo"); // 取得「辨識語言」這個選擇控制項
+  if (recognizing) { // 如果正在辨識，則停止。
+    recognition.stop();
+  } else { // 否則就開始辨識
+    textBox.value = ''; // 清除最終的辨識訊息
+ 
+    final_transcript = ''; // 最終的辨識訊息變數
+    recognition.lang = langCombo.value; // 設定辨識語言
+    recognition.start(); // 開始辨識
+  }
+}
+
+  if (!('webkitSpeechRecognition' in window)) {  // 如果找不到 window.webkitSpeechRecognition 這個屬性
+  // 就是不支援語音辨識，要求使用者更新瀏覽器。 
+  infoBox.innerText = "本瀏覽器不支援語音辨識，請更換瀏覽器！(Chrome 25 版以上才支援語音辨識)";
+} else {
+  var recognition = new webkitSpeechRecognition(); // 建立語音辨識物件 webkitSpeechRecognition
+  recognition.continuous = false; // 設定連續辨識模式
+  recognition.interimResults = false; // 設定輸出中先結果。
+
+  recognition.onstart = function() { // 開始辨識
+    recognizing = true; // 設定為辨識中
+    startStopButton.value = "按此停止"; // 辨識中...按鈕改為「按此停止」。  
+    infoBox.innerText = "辨識中...";  // 顯示訊息為「辨識中」...
+  };
+
+	  recognition.onend = function() { // 辨識完成
+	    recognizing = false; // 設定為「非辨識中」
+	    startStopButton.value = "重新辨識";  // 辨識完成...按鈕改為「開始辨識」。
+	    infoBox.innerText = ""; // 不顯示訊息
+	  };
+
+	  recognition.onresult = function(event) { // 辨識有任何結果時
+	    var interim_transcript = ''; // 中間結果
+	    for (var i = event.resultIndex; i < event.results.length; ++i) { // 對於每一個辨識結果
+	      if (event.results[i].isFinal) { // 如果是最終結果
+		final_transcript += event.results[i][0].transcript; // 將其加入最終結果
+	      }
+	//else { // 否則
+	        //interim_transcript += event.results[i][0].transcript; // 將其加入中間結果中
+	      //}
+	    }
+	  if (final_transcript.trim().length > 0) // 如果有最終辨識文字
+	    {
+		final_answer = final_transcript;
+                if (final_answer == compar){
+                      textBox.value = 'Correct answer!';
+                      answer.value = final_answer.toLowerCase();
+                      hhh = answer.value;
+                      history_record.value += ' '+hhh;     
+                }
+                else{
+                      textBox.value = 'Wrong';
+                      answer.value = final_answer.toLowerCase();
+                      hhh = answer.value;
+                      history_record.value += ' '+hhh;  
+                }   
+ 	    }
+     };
+}
+
+	
+</script>
+        <!-- Header -->
+			<header id="header">
+				<div class="inner">
+					<a href="" class="logo">Exercise</a>
+					<nav id="nav">
+						<label for="tt">{{member.username}},你好</label>
+					</nav>
+				</div>
+			</header>
+		<!-- Footer -->
+			<section id="footer">
+				<div class="inner">
+					<form action="" method="post"> {% csrf_token %}
+						<input type="hidden" value="{{member.id}}" name="user">
+						<div class="field half first">
+							<input type="hidden" value="{{member.id}}" name="user">
+							<label for="topic">第{% block number %}{% endblock %}個練習/共20個:{{ee}}</label><input type="hidden" value="{{ee}}" name="vocabulary"></br>
+							<label for="vokk">母音：{{v.vowel}}<input value="{{v.vowel}}" type="hidden" name="vowel"></p>kk音標：[{{a.kk}}]<input type="button" onclick="location.href='http://api.voicerss.org/?key=7ef261e19bde4ca28bdff0d17403f4d9&hl=en-us&src={{ee}}'" value="播放"></label></br>
+							<label for="answer">辨識結果</label>
+							<input id="answer" type="text" name="answer"/>
+							<input id="startStopButton" type="button" value="尚未辨識" onclick="startButton(event,'{{ee}}')"/><span style="color:red">*請在按完按鈕3秒後發聲</span></br>
+							<label for="rf">辨識對錯：<input id="text" type="text" name="result"/></label> 
+						</div>
+						<ul class="actions">
+							<label id="infoBox"></label>
+							<input id="record" type="hidden" name="history"/>
+        						<input value="{% block group %}{% endblock %}" type="hidden" name="groups">
+    							</form>
+							<select id="langCombo">
+      							    <option value="en-US">EN-US</option>
+    							</select>
+							<li><input type="submit" value="{% block page %}{% endblock %}" class="alt" /></li>
+						</ul>
+					</form>
+					<div class="copyright">
+						&copy; Untitled Design: <a href="https://templated.co/">TEMPLATED</a>. Images <a href="https://unsplash.com/">Unsplash</a>
+					</div>
+				</div>
+			</section>
+
+
+		<!-- Scripts -->
+
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+        </body>
+</html>

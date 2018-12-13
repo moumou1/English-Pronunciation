@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       <title>Lesson {{ vocc.number }}</title>
+       <meta charset='utf-8' />
+    </head>
+<body>
+  {% if request.user.is_authenticated %}
+  <a href="/lesson_list/">課程列表</a><p align="center">使用者:{{request.user}}</p>
+  {% else %}
+  {% endif %}
+  <h1>Lesson{{ vocc.number }}</h1>
+  {% if vocc.vocabulary_set.all %}
+    <p>此課程共有{{ vocc.vocabulary_set.all|length }}個單字</p>
+<table border="1" style="width:70%">
+<iframe width="0" height="0" name="test" style="display:none"></iframe>
+<!--   {% load staticfiles %}
+   <img src='{% static "img/126.jpg" %}' alt="printer" style="width:304px;height:228px;">-->
+  {% for vo in vocc.vocabulary_set.all %} 
+  <tr>
+    <td>{{ vo.number }}</td>  
+    <td>{{ vo.name }}</td>
+    <td>{{ vo.kk }}   <input type="button" onclick="test.location.href='www.google.com;" value="播放">
+</td>
+    <td>{{ vo.pos }}</td>		
+    <td>{{ vo.tran }}</td>
+    <td>{{ vo.sen }}</td>
+  </tr>
+  {% endfor %}
+</table>
+  {% else %}
+    <p>本課程沒有單字</p>
+  {% endif %}	  
+</body>
+</html>

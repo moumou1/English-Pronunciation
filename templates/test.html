@@ -1,0 +1,43 @@
+<!DOCTYPE>
+<html>
+<head>
+     <title>Test</title>
+     <meta charset='utf-8'>
+<style>
+table, th, td {
+    border:1px solid black;
+    border-collapse: collapse;
+} 
+th, td {
+    padding: 10px;
+    text-align: center;
+}
+</style>
+</head>
+<body>
+<h2>第2題</h2>
+<table style "width:50%">
+<form action="" method="POST"> {% csrf_token %}
+<input value="person" type="text" name="words">
+</form>
+       <tr>
+	   <th>發音結果</th>
+	   <th>轉換成kk音標</th>
+       </tr>
+      {% for n in names %}
+       <tr>
+           <td>{{n.0}}</td>
+      	   <td>{{n.1}}</td>
+       </tr>
+      {% endfor %}
+<!--      {% for w in namess %}
+      {{w.0}}
+      {{w.1}}
+      {{w.2}}
+      {% endfor %}-->
+<input onclick='responsiveVoice.speak("yellow", "US English Male");' type='button' value='Play' />
+<input onclick='responsiveVoice.speak("yellow", "US English Male");' type='button' value='Play' />
+</table>
+<script src='https://code.responsivevoice.org/responsivevoice.js'></script>
+</body>
+</html>

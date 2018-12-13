@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       <title>Lesson</title>
+       <meta charset='utf-8' />
+    </head>
+<body>
+<h1>課程列表</h1>   
+<table>
+    <tr>
+	<th>選取</th>
+	<th>單字數量</th>
+    </tr>
+    {% for f in lessons %}
+  <tr>
+    <td> <a href="/lessons/{{f.id}}/"> Lesson {{f.number}} </a> </td>
+    <td> {{ f.quantity }} </td>
+  </tr>
+    {% endfor %}
+</table>   
+</body>
+</html>
+ 

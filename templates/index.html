@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <title>English Pronunciation</title>
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+     {% load staticfiles %}
+     <link rel="stylesheet" href="{% static 'asset/css/main.css' %}">
+     <style type="test/css">
+     #one{
+     background: #E5474B;
+     }
+     </style>
+</head>
+<body>
+        <form action="" method="post"> {% csrf_token %}
+        <input value="{{pretest.0}}" type="hidden" name="topic1"/>
+        <input value="{{pretest.1}}" type="hidden" name="topic2"/>
+        <input value="{{pretest.2}}" type="hidden" name="topic3"/>
+        <input value="{{pretest.3}}" type="hidden" name="topic4"/>
+        <input value="{{pretest.4}}" type="hidden" name="topic5"/>
+        <input value="{{pretest.5}}" type="hidden" name="topic6"/>
+        <input value="{{pretest.6}}" type="hidden" name="topic7"/>
+        <input value="{{pretest.7}}" type="hidden" name="topic8"/>
+        <input value="{{pretest.8}}" type="hidden" name="topic9"/>
+        <input value="{{pretest.9}}" type="hidden" name="topic10"/>
+        <input value="{{pretest.10}}" type="hidden" name="topic11"/>
+        <input value="{{pretest.11}}" type="hidden" name="topic12"/>
+        <input value="{{pretest.12}}" type="hidden" name="topic13"/>
+        <input value="{{pretest.13}}" type="hidden" name="topic14"/>
+        <input value="{{pretest.14}}" type="hidden" name="topic15"/>
+        <input value="{{pretest.15}}" type="hidden" name="topic16"/>
+        <input value="{{pretest.16}}" type="hidden" name="topic17"/>
+        <input value="{{pretest.17}}" type="hidden" name="topic18"/>
+        <input value="{{pretest.18}}" type="hidden" name="topic19"/>
+        <input value="{{pretest.19}}" type="hidden" name="topic20"/>
+        <input value="{{pretest.20}}" type="hidden" name="topic21"/>
+        <input value="{{pretest.21}}" type="hidden" name="topic22"/>
+        <input value="{{pretest.22}}" type="hidden" name="topic23"/>
+        <input value="{{pretest.23}}" type="hidden" name="topic24"/>
+        <input value="{{pretest.24}}" type="hidden" name="topic25"/>
+        <input value="{{pretest.25}}" type="hidden" name="topic26"/>
+        <input value="{{pretest.26}}" type="hidden" name="topic27"/>
+        <input value="{{pretest.27}}" type="hidden" name="topic28"/>
+        <input value="{{pretest.28}}" type="hidden" name="topic29"/>
+        <input value="{{pretest.29}}" type="hidden" name="topic30"/>
+        <input value="{{pretest.30}}" type="hidden" name="topic31"/>
+        <input value="{{pretest.31}}" type="hidden" name="topic32"/>
+        <input value="{{pretest.32}}" type="hidden" name="topic33"/>
+        <input value="{{pretest.33}}" type="hidden" name="topic34"/>
+        <input value="{{pretest.34}}" type="hidden" name="topic35"/>
+        <input value="{{pretest.35}}" type="hidden" name="topic36"/>
+        <input value="{{pretest.36}}" type="hidden" name="topic37"/>
+        <input value="{{pretest.37}}" type="hidden" name="topic38"/>
+        <input value="{{pretest.38}}" type="hidden" name="topic39"/>
+        <input value="{{pretest.39}}" type="hidden" name="topic40"/>
+        <input value="{{pretest.40}}" type="hidden" name="topic41"/>
+        <input value="{{pretest.41}}" type="hidden" name="topic42"/>
+        <input value="{{pretest.42}}" type="hidden" name="topic43"/>
+        <input value="{{pretest.43}}" type="hidden" name="topic44"/>
+        <input value="{{pretest.44}}" type="hidden" name="topic45"/>
+        <input value="{{pretest.45}}" type="hidden" name="topic46"/>
+        <input value="{{pretest.46}}" type="hidden" name="topic47"/>
+        <input value="{{pretest.47}}" type="hidden" name="topic48"/>
+        <input value="{{pretest.48}}" type="hidden" name="topic49"/>
+        <input value="{{pretest.49}}" type="hidden" name="topic50"/>
+        <input value="{{pretest.50}}" type="hidden" name="topic51"/>
+        <input value="{{pretest.51}}" type="hidden" name="topic52"/>
+        <input value="{{pretest.52}}" type="hidden" name="topic53"/>        
+        <input value="{{pretest.53}}" type="hidden" name="topic54"/>
+        <input value="{{pretest.54}}" type="hidden" name="topic55"/>
+        <input value="{{member.id}}" type="hidden" name="user"/>
+        <!-- Header -->
+			<header id="header">
+				<div class="inner">
+					<a href="" class="logo">Welcome to English Pronunciation</a>
+					<nav id="nav">
+						{% if request.user.is_authenticated %}
+						<a href="">{{request.user}}, 您已成功登入</a>
+						<a href="/accounts/logout/">登出</a>
+			                        {% else %}
+						<a href="/accounts/login/">登入</a>
+						{% endif %}
+						<a href="/accounts/register/">註冊</a>
+					</nav>
+				</div>
+			</header>
+		<!-- Banner -->
+			<section id="banner">
+				<div class="inner">
+					<h1>{{a}}</h1>
+					<ul class="actions">
+						<h1><input value="Pre-test" {{hi}} type="submit" class="alt"/><span></br>測驗時,請勿中途離開！每題只能測驗一次！時間約為5分鐘!</span></h1>
+					</form>
+					</ul>
+				</div>
+			</section>
+
+		<!-- Footer -->
+			<section id="footer">
+				<div class="inner">
+					<header>
+						<h2>Get in Touch</h2>
+					</header>
+					<form method="post" action="#">
+						<div class="field half first">
+							<label for="name">Name</label>
+							<input type="text" name="name" id="name" />
+						</div>
+						<div class="field half">
+							<label for="email">Email</label>
+							<input type="text" name="email" id="email" />
+						</div>
+						<div class="field">
+							<label for="message">Message</label>
+							<textarea name="message" id="message" rows="6"></textarea>
+						</div>
+						<ul class="actions">
+							<li><input type="submit" value="Send Message" class="alt" /></li>
+						</ul>
+					</form>
+					<div class="copyright">
+						&copy; Untitled Design: <a href="https://templated.co/">TEMPLATED</a>. Images <a href="https://unsplash.com/">Unsplash</a>
+					</div>
+				</div>
+			</section>
+
+
+		<!-- Scripts -->
+
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+	</body>
+</html>

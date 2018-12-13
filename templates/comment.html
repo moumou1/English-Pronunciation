@@ -1,0 +1,14 @@
+<!doctype html>
+<html>
+    <head>
+	<title> Comment </title>
+        <meta charset='utf-8'>
+    </head>
+    <body>
+        {% if request.user.is_authenticated %}
+        <p align="center">{{request.user}}</p>
+        {% else %}
+        <p>您尚未登入</p>
+	{% endif %}
+    </body>
+</html>

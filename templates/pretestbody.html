@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+      <title>Pre-test speaking</title>
+      <meta charset='utf-8' />
+      <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+      {% load staticfiles %}
+      <link rel="stylesheet" href="{% static 'asset/css/main.css' %}">
+<style>
+</style>
+</head>
+<body>
+<script type="text/javascript">
+var infoBox; // 訊息 label
+var textBox; // 最終的辨識訊息 text input
+//var tempBox; // 中間的辨識訊息 text input
+var startStopButton; // 「辨識/停止」按鈕
+var final_transcript = ''; // 最終的辨識訊息的變數
+var recognizing = false; // 是否辨識中
+
+function startButton(event) {
+  infoBox = document.getElementById("infoBox"); // 取得訊息控制項 infoBox
+  textBox = document.getElementById("textBox"); // 取得最終的辨識訊息控制項 textBox
+//  tempBox = document.getElementById("tempBox"); // 取得中間的辨識訊息控制項 tempBox
+  startStopButton = document.getElementById("startStopButton"); // 取得「辨識/停止」這個按鈕控制項
+  langCombo = document.getElementById("langCombo"); // 取得「辨識語言」這個選擇控制項
+  if (recognizing) { // 如果正在辨識，則停止。
+    recognition.stop();
+  } else { // 否則就開始辨識
+    textBox.value = ''; // 清除最終的辨識訊息
+//    tempBox.value = ''; // 清除中間的辨識訊息
+    final_transcript = ''; // 最終的辨識訊息變數
+    recognition.lang = langCombo.value; // 設定辨識語言
+    recognition.start(); // 開始辨識
+  }
+}
+
+if (!('webkitSpeechRecognition' in window)) {  // 如果找不到 window.webkitSpeechRecognition 這個屬性
+  // 就是不支援語音辨識，要求使用者更新瀏覽器。 
+  infoBox.innerText = "本瀏覽器不支援語音辨識，請更換瀏覽器！(Chrome 25 版以上才支援語音辨識)";
+} else {
+  var recognition = new webkitSpeechRecognition(); // 建立語音辨識物件 webkitSpeechRecognition
+  recognition.continuous = false; // 設定連續辨識模式
+  recognition.interimResults = false; // 設定輸出中先結果。
+
+  recognition.onstart = function() { // 開始辨識
+    recognizing = true; // 設定為辨識中
+    startStopButton.value = "按此停止"; // 辨識中...按鈕改為「按此停止」。  
+    infoBox.innerText = "辨識中...";  // 顯示訊息為「辨識中」...
+  };
+
+  recognition.onend = function() { // 辨識完成
+    recognizing = false; // 設定為「非辨識中」
+    startStopButton.value = "已完成辨識";  // 辨識完成...按鈕改為「開始辨識」。
+    infoBox.innerText = ""; // 不顯示訊息
+  };
+
+  recognition.onresult = function(event) { // 辨識有任何結果時
+    var interim_transcript = ''; // 中間結果
+    for (var i = event.resultIndex; i < event.results.length; ++i) { // 對於每一個辨識結果
+      if (event.results[i].isFinal) { // 如果是最終結果
+        final_transcript += event.results[i][0].transcript; // 將其加入最終結果中
+      }
+    }
+    if (final_transcript.trim().length > 0) // 如果有最終辨識文字
+        textBox.value = final_transcript.toLowerCase(); // 顯示最終辨識文字
+  };
+}
+</script>
+        <!-- Header -->
+			<header id="header">
+				<div class="inner">
+					<a href="" class="logo">pretest Pronunciation</a>
+					<nav id="nav">
+						<label for="tt">{{member.username}},你好</label>
+					</nav>
+				</div>
+			</header>
+		<!-- Footer -->
+			<section id="footer">
+				<div class="inner">
+					<form action="" method="post"> {% csrf_token %}
+						<input type="hidden" value="{{member.id}}" name="user">
+						<div class="field half first">
+							<input type="hidden" value="{{member.id}}" name="user">
+							<label for="topic">第{% block number %}{% endblock %}題/共55題:{{ee}}</label><input type="hidden" value="{{ee}}" name="topic"></br>
+							<label for="answer">作答區</label>
+							<input id="textBox" type="password" name="textbox"/>
+							<input id="startStopButton" type="button" value="開始作答" onclick="startButton(event),this.disabled=true"/><span style="color:red">*請在按完開始作答3秒後作答</span></br>
+							<input value="{{v.vowel}}" type="hidden" name="kk">
+						</div>
+						<ul class="actions">
+							<label id="infoBox"></label>
+    							</form>
+							<select id="langCombo">
+      							    <option value="en-US">EN-US</option>
+    							</select>
+							<li><input type="submit" value="{% block page %}{% endblock %}" class="alt" /></li>
+						</ul>
+					</form>
+					<div class="copyright">
+						&copy; Untitled Design: <a href="https://templated.co/">TEMPLATED</a>. Images <a href="https://unsplash.com/">Unsplash</a>
+					</div>
+				</div>
+			</section>
+
+
+		<!-- Scripts -->
+
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+        </body>
+</html>
+

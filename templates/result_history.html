@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+      {% if request.user.is_authenticated %}
+      <title>{{request.user}} History</title>
+      <meta charset='utf8' />
+<style>
+table, th, td {
+    border: 2px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 15px;
+}
+</style>
+</head>
+<body>
+    <a href="/result/">發音紀錄&測驗結果</a><p align="center">使用者:{{request.user}}</p>
+    {% else %}
+    {% endif %}
+       <h1>課程:{{ mems.course }}的發音紀錄</h1>
+       <table style="width:50%">
+             <tr>
+		 <th>題號</th>
+		 <th>題目</th>
+		 <th>發音紀錄</th>
+	     </tr>
+	     <tr>
+		 <td>1</td>
+		 <td>{{mems.topic1}}</td>
+		 <td>{{mems.history1}}</td>
+	     </tr>
+             <tr>
+                 <td>2</td>
+                 <td>{{mems.topic2}}</td>
+                 <td>{{mems.history2}}</td>
+             </tr>
+             <tr>
+                 <td>3</td>
+                 <td>{{mems.topic3}}</td>
+                 <td>{{mems.history3}}</td>
+             </tr>
+             <tr>
+                 <td>4</td>
+                 <td>{{mems.topic4}}</td>
+                 <td>{{mems.history4}}</td>
+             </tr>
+             <tr>
+                 <td>5</td>
+                 <td>{{mems.topic5}}</td>
+                 <td>{{mems.history5}}</td>
+             </tr>
+             <tr>
+                 <td>6</td>
+                 <td>{{mems.topic6}}</td>
+                 <td>{{mems.history6}}</td>
+             </tr>
+             <tr>
+                 <td>7</td>
+                 <td>{{mems.topic7}}</td>
+                 <td>{{mems.history7}}</td>
+             </tr>
+             <tr>
+                 <td>8</td>
+                 <td>{{mems.topic8}}</td>
+                 <td>{{mems.history8}}</td>
+             </tr>
+             <tr>
+                 <td>10</td>
+                 <td>{{mems.topic10}}</td>
+                 <td>{{mems.history10}}</td>
+             </tr>
+             <tr>
+                 <td>11</td>
+                 <td>{{mems.topic11}}</td>
+                 <td>{{mems.history11}}</td>
+             </tr>
+             <tr>
+                 <td>12</td>
+                 <td>{{mems.topic12}}</td>
+                 <td>{{mems.history12}}</td>
+             </tr>
+             <tr>
+                 <td>13</td>
+                 <td>{{mems.topic13}}</td>
+                 <td>{{mems.history13}}</td>
+             </tr>
+             <tr>
+                 <td>14</td>
+                 <td>{{mems.topic14}}</td>
+                 <td>{{mems.history14}}</td>
+             </tr>
+             <tr>
+                 <td>15</td>
+                 <td>{{mems.topic15}}</td>
+                 <td>{{mems.history15}}</td>
+             </tr>
+             <tr>
+                 <td>16</td>
+                 <td>{{mems.topic16}}</td>
+                 <td>{{mems.history16}}</td>
+             </tr>
+             <tr>
+                 <td>17</td>
+                 <td>{{mems.topic17}}</td>
+                 <td>{{mems.history17}}</td>
+             </tr>
+             <tr>
+                 <td>18</td>
+                 <td>{{mems.topic18}}</td>
+                 <td>{{mems.history18}}</td>
+             </tr>
+             <tr>
+                 <td>19</td>
+                 <td>{{mems.topic19}}</td>
+                 <td>{{mems.history19}}</td>
+             </tr>
+             <tr>
+                 <td>20</td>
+                 <td>{{mems.topic20}}</td>
+                 <td>{{mems.history20}}</td>
+             </tr>
+             <tr>
+                 <td>21</td>
+                 <td>{{mems.topic21}}</td>
+                 <td>{{mems.history21}}</td>
+             </tr>
+             <tr>
+                 <td>22</td>
+                 <td>{{mems.topic22}}</td>
+                 <td>{{mems.history22}}</td>
+             </tr>
+             <tr>
+                 <td>23</td>
+                 <td>{{mems.topic23}}</td>
+                 <td>{{mems.history23}}</td>
+             </tr>
+             <tr>
+                 <td>24</td>
+                 <td>{{mems.topic24}}</td>
+                 <td>{{mems.history24}}</td>
+             </tr>
+             <tr>
+                 <td>25</td>
+                 <td>{{mems.topic25}}</td>
+                 <td>{{mems.history25}}</td>
+             </tr>
+             <tr>
+                 <td>26</td>
+                 <td>{{mems.topic26}}</td>
+                 <td>{{mems.history26}}</td>
+             </tr>
+             <tr>
+                 <td>27</td>
+                 <td>{{mems.topic27}}</td>
+                 <td>{{mems.history27}}</td>
+             </tr>
+             <tr>
+                 <td>28</td>
+                 <td>{{mems.topic28}}</td>
+                 <td>{{mems.history28}}</td>
+             </tr>
+             <tr>
+                 <td>29</td>
+                 <td>{{mems.topic29}}</td>
+                 <td>{{mems.history29}}</td>
+             </tr>
+             <tr>
+                 <td>30</td>
+                 <td>{{mems.topic30}}</td>
+                 <td>{{mems.history30}}</td>
+             </tr>
+       </table> 
+</body>
+</html>

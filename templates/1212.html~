@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       <title>Lesson 1</title>
+       <meta charset='utf-8' />
+    </head>
+<body>
+  <h1>Lesson{{ vocc.number }}</h1>
+  {% if vocc.r_set.all %}
+    <p>本餐廳總共有{{ vocc.r_set.all|length }}</p>
+<table border="1" style="width:70%">
+<iframe width="0" height="0" name="test" style="display:none"></iframe>
+ 
+  {% for r in vocc.r_set.all %} 
+  <td>  
+    <td>{{ r.name }}   <input type="button" onclick="test.location.href='http://translate.google.com/translate_tts?ie=utf-8&tl=en&q={{ r.name }}&client=tw-ob';" value="播放">
+  </td>
+    <td>{{ r.pos }}</td>		
+    <td>{{ r.tran }}</td>
+    <td>{{ r.sen }}</td>
+  </tr>
+  {% endfor %}
+</table>
+  {% else %}
+    <p>本課程沒有單字</p>
+  {% endif %}   
+</body>
+</html>

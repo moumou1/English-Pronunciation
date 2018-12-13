@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <meta charset='utf-8'/>
+     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+     {% load staticfiles %}
+     <link rel="stylesheet" href="{% static 'asset/css/main.css' %}">
+     <style type="text/css">
+     #aside{
+     width: 20%;
+     height: ;
+     text-align: center;
+     background-color: #444444;
+     padding:px;
+     float: left;
+     font-size: px;
+     font-family: serif;
+     }
+     #section{
+     width: ;
+     height: ;
+     line-height: em;
+     padding: px;
+     float: center;
+     font-size: px;
+     }
+     th, td{
+     text-align: center;
+     }
+     </style>
+</head>
+<body>
+        <!-- Header -->
+			<header id="header">
+				<div class="inner">
+					<a href="" class="logo">Welcome to English Pronunciation</a>
+					<nav id="nav">
+						{% if request.user.is_authenticated %}
+						<a href="">{{request.user}}, 您好</a>
+			                        {% else %}
+						<a href="/accounts/login/">登入</a>
+						{% endif %}
+						<a href="/accounts/register/">註冊</a>
+					</nav>
+				</div>
+			</header>
+			<a href="#menu" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+
+		<!-- Banner -->
+			<section id="banner">
+				<div class="inner">
+					<ul class="actions">
+					</ul>
+				</div>
+			</section>
+
+	<!-- aside -->
+    <aside id="aside">
+    <h3>Pretest pronunciation</h3>
+      <a href="/pretestspeakinglist/">pretest pronunciation report</a>
+    <h3>Pronunciation Exercise</h3>
+      <a href="/exerciseoptions/">exercise group options</a></br>
+      <a href="/exerciseresult/">exercise report</a>
+    <h3>Posttest pronunciation</h3>
+      <ul class="actions">
+	  <li><a href="/pretestspeakinglist/" class="button special">posttest</a></li>
+      </ul>
+      <!--<input value="posttest pronunciation" {{hi}} type="submit"/><br><p><span style="color:white">{{a}}</br>註：此測驗只能測驗一次</span></p><span style="color:red">測驗時,請勿中途離開！</br> 每題只能測驗一次！</br>測驗時間約為5分鐘！</span></br>-->
+      <a {{ma}}href="/posttestspeakinglist/">posttest pronunciation report</a>
+      <h2>答錯統計</h2>
+<h4>GROUP A 母音</h4>
+    <p>母音'æ',答錯{{a1}}題</br>
+    母音'e',答錯{{a2}}題</br>
+    母音'ɛ',答錯{{a3}}題</p>
+<h4>GROUP B 母音</h4>
+    <p>母音'i',答錯{{a4}}題</br>
+    母音'ɪ',答錯{{a5}}題</p>
+<h4>GROUP C 母音</h4>
+    <p>母音'u',答錯{{a6}}題</br>
+    母音'ʊ',答錯{{a7}}題</p>
+<h4>GROUP D 母音</h4>
+    <p>母音'ʌ',答錯{{a8}}題</br>
+    母音'ɑ',答錯{{a9}}題</p>
+<h4>GROUP E 母音</h4>
+    <p>母音'o',答錯{{a10}}題</br>
+    母音'ɔ',答錯{{a11}}題</p>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br> 
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+	</aside>
+  <section>
+{% if member.exercise_set.all %}
+{% else %}
+<p>尚未有練習紀錄</p>
+{% endif %}
+<center><h2>{{member.username}}的練習紀錄</h2>
+<div class="table-wrapper">
+  <table style="width:90%">
+    <thead>
+      <tr>
+          <th>Group</th>
+          <th>練習題數</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+          <td><a href="/exerciselista/">A(æ,e,ɛ)</a></td>
+          <td>{{e1}}</td>
+      </tr>
+      <tr>
+          <td><a href="/exerciselistb/">B(i,ɪ)</a></td>
+          <td>{{e2}}</td>
+      </tr>
+      <tr>
+          <td><a href="/exerciselistc/">C(u,ʊ)</a></td>
+          <td>{{e3}}</td>
+      </tr>
+      <tr>
+          <td><a href="/exerciselistd/">D(ʌ,ɑ)</a></td>
+          <td>{{e4}}</td>
+      </tr>
+      <tr>
+          <td><a href="/exerciseliste/">E(o,ɔ)</a></td>
+          <td>{{e5}}</td>
+      </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="2"></td>
+        </tr>
+    </tfoot>
+  </table>
+</div>
+   </section></center>
+</body>
+</html>

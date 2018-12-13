@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <meta charset='utf-8' />
+     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+     {% load staticfiles %}
+     <link rel="stylesheet" href="{% static 'asset/css/main.css' %}">
+     <style type="text/css">
+     #aside{
+     width: 20%;
+     height: ;
+     text-align: center;
+     background-color: #444444;
+     padding:px;
+     float: left;
+     font-size: px;
+     font-family: serif;
+     }
+     #section{
+     width: ;
+     height: ;
+     line-height: em;
+     padding: px;
+     float: center;
+     font-size: px;
+     }
+     th, td{
+     text-align: center;
+     }
+     </style>
+</head>
+<body>
+        <!-- Header -->
+			<header id="header">
+				<div class="inner">
+					<a href="" class="logo">Welcome to English Pronunciation</a>
+					<nav id="nav">
+						{% if request.user.is_authenticated %}
+						<a href="">{{request.user}}, 您好</a>
+						<a href="/accounts/logout">登出</a>
+			                        {% else %}
+						<a href="/accounts/login/">登入</a>
+						{% endif %}
+						<a href="/accounts/register/">註冊</a>
+					</nav>
+				</div>
+			</header>
+			<a href="#menu" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+
+		<!-- Banner -->
+			<section id="banner">
+				<div class="inner">
+					<h1>{{a}}<br>註：此測驗只能測驗一次</h1>
+					<ul class="actions">
+						<h3><input value="Post-test" {{hi}} type="submit" class="alt"/>
+					</form>
+					</ul>
+				</div>
+			</section>
+
+	<!-- aside -->
+    <aside id="aside">
+    <h3>Pretest pronunciation</h3>
+      <a href="/pretestspeakinglist/">pretest pronunciation report</a>
+    <h3>Pronunciation Exercise</h3>
+      <a href="/exerciseoptions/">exercise group options</a></br>
+      <a href="/exerciseresult/">exercise report</a>
+    <h3>Posttest pronunciation</h3>
+      <a href="/posttestspeakinglist/">posttest pronunciation report</a></br>
+      <a href="/mistakestatis/">personal mistake report</a>
+<div style="color:#e2e2e2;border:2px"><h3>分群答錯統計</h3>
+<h4>GROUP A</h4>
+    <p>母音'æ',答錯{{aa1}}題</br>
+    母音'e',答錯{{aa2}}題</br>
+    母音'ɛ',題錯{{aa3}}題</p>
+<h4>GROUP B</h4>
+    <p>母音'i',答錯{{aa4}}題</br>
+    母音'ɪ',答錯{{aa5}}題</p>
+<h4>GROUP C</h4>
+    <p>母音'u',答錯{{aa6}}題</br>
+    母音'ʊ',答錯{{aa7}}題</p>
+<h4>GROUP D</h4>
+    <p>母音'ʌ',答錯{{aa8}}題</br>
+    母音'ɑ',答錯{{aa9}}題</p>
+<h4>GROUP E</h4>
+    <p>母音'o',題錯{{aa10}}題</br>
+    母音'ɔ',題錯{{aa11}}題</p></div>
+  </br>
+  </br>
+  </br>
+  </br>
+  </br>
+  </br>
+  </br>
+  </br>
+  </br>
+  </br>
+  </aside>
+
+
+  <section>
+  <center><h1>使用者:{{request.user}}的後測報告</h1>
+<p>測驗時間{{ti}},總共{{qun}}題,答對<span style="color:red;">{{score}}</span>題</p>
+  <div class="table-wrapper">
+    <table>
+        <tr>
+           <td>
+    <table class="alt">
+        <thead>    
+	    <tr>
+		<th>題目(Topic)</th>
+                <th>母音(Vowel)</th>
+		<th>答題(Answer)</th>
+            </tr>
+        </thead>
+        </tbody>
+	{% for a in posttest %}        
+            <tr>
+                <td>{{a.vocabulary}}</td>
+                <td>{{a.vowel}}</td>
+                <td>{{a.answer}}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+	<!--<tfoot>
+	    <tr>
+		<td colspan="2"></td>
+	    </tr>
+	</tfoot>-->
+     </table>
+            </td>
+            <td>
+   <div class="table-wrapper">
+     <table class="alt">
+        </thead> 
+         <tr>
+            <th>KK音標分析</th> 
+         </tr>
+        </thead>
+        <tbody>
+         <tr>
+            <td>
+		{% for b in fre0 %}	
+		    {{b}}
+		{% endfor %}
+	    </td>
+         </tr>
+         <tr>
+            <td>
+		{% for b in fre1 %}
+		    {{b}}
+		{% endfor %}
+	    </td>
+         </tr>
+         <tr>
+            <td>
+		{% for b in fre2 %}
+		    {{b}}
+		{% endfor %}
+	    </td>
+         </tr>
+         <tr>
+            <td>
+		{% for b in fre3 %}
+		    {{b}}
+		{% endfor %}
+	    </td>
+         </tr>
+         <tr>
+            <td>
+		{% for b in fre4 %}
+		    {{b}}
+		{% endfor %}
+	    </td>
+         </tr>
+         <tr>
+            <td>
+		{% for b in fre5 %}
+		    {{b}}
+		{% endfor %}
+	    </td>
+         </tr>
+         <tr>
+            <td>
+		{% for b in fre6 %}
+		    {{b}}
+		{% endfor %}
+	    </td>
+         </tr>
+         <tr>
+            <td>
+		{% for b in fre7 %}
+		    {{b}}
+		{% endfor %}
+	    </td>
+         </tr>
+         <tr>
+            <td>
+		{% for b in fre8 %}
+		    {{b}}
+		{% endfor %}
+	    </td>
+         </tr>
+         <tr>
+            <td>
+		{% for b in fre9 %}
+		    {{b}}
+		{% endfor %}
+	    </td>
+         </tr>
+         <tr>
+            <td>
+		{% for b in fre10 %}
+		    {{b}}
+		{% endfor %}
+	    </td>
+         </tr>
+         <tr>
+            <td>
+		{% for b in fre11 %}
+		    {{b}}
+		{% endfor %}
+	    </td>
+         </tr>
+         <tr>
+            <td>
+		{% for b in fre12 %}
+		    {{b}}
+		{% endfor %}
+	    </td>
+         </tr>
+         <tr>
+            <td>
+		{% for b in fre13 %}
+		    {{b}}
+		{% endfor %}
+	    </td>
+         </tr>
+         <tr>
+            <td>
+		{% for b in fre14 %}
+		    {{b}}
+		{% endfor %}
+	    </td>
+         </tr>
+         <tr>
+            <td>
+		{% for b in fre15 %}
+		    {{b}}
+		{% endfor %}
+	    </td>
+         </tr>
+         <tr>
+            <td>
+		{% for b in fre16 %}
+		    {{b}}
+		{% endfor %}
+	    </td>
+         </tr>
+         <tr>
+            <td>
+		{% for b in fre17 %}
+		    {{b}}
+		{% endfor %}
+	    </td>
+         </tr>
+         <tr>
+            <td>
+		{% for b in fre18 %}
+		    {{b}}
+		{% endfor %}
+	    </td>
+         </tr>
+         <tr>
+            <td>
+		{% for b in fre19 %}
+		    {{b}}
+		{% endfor %}
+	    </td>
+         </tr>
+         <tr>
+            <td>
+		{% for b in fre20 %}
+		    {{b}}
+		{% endfor %}
+	    </td>
+         </tr>
+         <tr>
+            <td>
+		{% for b in fre21 %}
+		    {{b}}
+		{% endfor %}
+	    </td>
+         </tr>
+         <tr>
+            <td>
+		{% for b in fre22 %}
+		    {{b}}
+		{% endfor %}
+	    </td>
+         </tr>
+         <tr>
+            <td>
+		{% for b in fre23 %}
+		    {{b}}
+		{% endfor %}
+	    </td>
+         </tr>
+         <tr>
+            <td>
+		{% for b in fre24 %}
+		    {{b}}
+		{% endfor %}
+	    </td>
+         </tr>
+         <tr>
+            <td>
+		{% for b in fre25 %}
+		    {{b}}
+		{% endfor %}
+	    </td>
+         </tr>
+         <tr>
+            <td>
+		{% for b in fre26 %}
+		    {{b}}
+		{% endfor %}
+	    </td>
+         </tr>
+         <tr>
+            <td>
+		{% for b in fre27 %}
+		    {{b}}
+		{% endfor %}
+	    </td>
+         </tr>
+         <tr>
+            <td>
+		{% for b in fre28 %}
+		    {{b}}
+		{% endfor %}
+	    </td>
+         </tr>
+         <tr>
+            <td>
+		{% for b in fre29 %}
+		    {{b}}
+		{% endfor %}
+	    </td>
+         </tr>
+         <tr>
+            <td>
+		{% for b in fre30 %}
+		    {{b}}
+		{% endfor %}
+	    </td>
+         </tr>
+         <tr>
+            <td>
+		{% for b in fre31 %}
+		    {{b}}
+		{% endfor %}
+	    </td>
+         </tr>
+         <tr>
+            <td>
+		{% for b in fre32 %}
+		    {{b}}
+		{% endfor %}
+	    </td>
+         </tr>
+         <tr>
+            <td>
+		{% for b in fre33 %}
+		    {{b}}
+		{% endfor %}
+	    </td>
+         </tr>
+         <tr>
+            <td>
+		{% for b in fre34 %}
+		    {{b}}
+		{% endfor %}
+	    </td>
+         </tr>
+         <tr>
+            <td>
+		{% for b in fre35 %}
+		    {{b}}
+		{% endfor %}
+	    </td>
+         </tr>
+         <tr>
+            <td>
+		{% for b in fre36 %}
+		    {{b}}
+		{% endfor %}
+	    </td>
+         </tr>
+         <tr>
+            <td>
+		{% for b in fre37 %}
+		    {{b}}
+		{% endfor %}
+	    </td>
+         </tr>
+         <tr>
+            <td>
+		{% for b in fre38 %}
+		    {{b}}
+		{% endfor %}
+	    </td>
+         </tr>
+         <tr>
+            <td>
+		{% for b in fre39 %}
+		    {{b}}
+		{% endfor %}
+	    </td>
+         </tr>
+         <tr>
+            <td>
+		{% for b in fre40 %}
+		    {{b}}
+		{% endfor %}
+	    </td>
+         </tr>
+         <tr>
+            <td>
+		{% for b in fre41 %}
+		    {{b}}
+		{% endfor %}
+	    </td>
+         </tr>
+         <tr>
+            <td>
+		{% for b in fre42 %}
+		    {{b}}
+		{% endfor %}
+	    </td>
+         </tr>
+         <tr>
+            <td>
+		{% for b in fre43 %}
+		    {{b}}
+		{% endfor %}
+	    </td>
+         </tr>
+         <tr>
+            <td>
+		{% for b in fre44 %}
+		    {{b}}
+		{% endfor %}
+	    </td>
+         </tr>
+         <tr>
+            <td>
+		{% for b in fre45 %}
+		    {{b}}
+		{% endfor %}
+	    </td>
+         </tr>
+         <tr>
+            <td>
+		{% for b in fre46 %}
+		    {{b}}
+		{% endfor %}
+	    </td>
+         </tr>
+         <tr>
+            <td>
+		{% for b in fre47 %}
+		    {{b}}
+		{% endfor %}
+	    </td>
+         </tr>
+         <tr>
+            <td>
+		{% for b in fre48 %}
+		    {{b}}
+		{% endfor %}
+	    </td>
+         </tr>
+         <tr>
+            <td>
+		{% for b in fre49 %}
+		    {{b}}
+		{% endfor %}
+	    </td>
+         </tr>
+         <tr>
+            <td>
+		{% for b in fre50 %}
+		    {{b}}
+		{% endfor %}
+	    </td>
+         </tr>
+         <tr>
+            <td>
+		{% for b in fre51 %}
+		    {{b}}
+		{% endfor %}
+	    </td>
+         </tr>
+         <tr>
+            <td>
+		{% for b in fre52 %}
+		    {{b}}
+		{% endfor %}
+	    </td>
+         </tr>
+         <tr>
+            <td>
+		{% for b in fre53 %}
+		    {{b}}
+		{% endfor %}
+	    </td>
+         </tr>
+         <tr>
+            <td>
+		{% for b in fre54 %}
+		    {{b}}
+		{% endfor %}
+	    </td>
+         </tr>
+        </tbody>
+     </table>
+            </td>
+            </tr>
+     </table>
+  </div>
+  </div></center>
+  <section>
+
+
+		<!-- Footer -->
+			<section id="footer">
+				<div class="inner">
+					<header>
+						<h2>Get in Touch</h2>
+					</header>
+					<form method="post" action="#">
+						<div class="field half first">
+							<label for="name">Name</label>
+							<input type="text" name="name" id="name" />
+						</div>
+						<div class="field half">
+							<label for="email">Email</label>
+							<input type="text" name="email" id="email" />
+						</div>
+						<div class="field">
+							<label for="message">Message</label>
+							<textarea name="message" id="message" rows="6"></textarea>
+						</div>
+						<ul class="actions">
+							<li><input type="submit" value="Send Message" class="alt" /></li>
+						</ul>
+					</form>
+					<div class="copyright">
+						&copy; Untitled Design: <a href="https://templated.co/">TEMPLATED</a>. Images <a href="https://unsplash.com/">Unsplash</a>
+					</div>
+				</div>
+			</section>
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+	</body>
+</html>
+

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+      {% if request.user.is_authenticated %}
+      <title>Result {{ request.user }}</title>
+      <meta charset='utf-8' />
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+ padding: 5px;
+}
+</style>
+</head>
+<body>
+    <a href="/lesson_list/">課程列表</a><h1 align="center">{{ request.user }}的測驗結果</h1>
+    {% else %}
+    {% endif %}
+    {% if member.record_set.all %}
+    {% else %}
+    <h3>還沒有測驗結果!!</h3>
+    {% endif %}
+    {% if member.history_set.all %}
+    {% else %}
+    <h3>還沒有練習發音的紀錄</h3>
+    {% endif %}
+    <table style="width:100%">
+        <tr>
+	    <td>
+    {% for y in his %}
+    <table align="" style="width:30%">
+        <tr>
+            <th>練習課程</th>
+        </tr>
+        <tr>
+            <td><a href="/result_history/{{y.id}}/">{{ y.course }}</a></td>
+ 	</tr>
+    </table>
+    {% endfor %}
+	    </td>
+	    <td>
+    {% for x in memm %}
+    <table align="" style="width:30%">
+        <tr>
+	    <th>測驗課程</th>
+ 	    <th>分數</th>
+	</tr>
+	<tr>
+	    <td><a href="/result_lesson/{{x.id}}/">{{ x.lessons }}</a></td>
+	    <td><span style="color:red;">{{ x.score }}</span></td>
+        </tr>
+    </table>
+    {% endfor %}
+	    </td>      
+        </tr>
+</table>
+</body>
+</html>

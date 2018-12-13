@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+      {% if request.user.is_authenticated %}
+      <title>{{ request.user}} result_lesson</title>
+      <meta charset='utf-8' />
+<style>
+table, th, td {
+    border: 2px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 15px;
+}
+</style>
+</head>
+<body>
+    <a href="/result/">發音紀錄&測驗結果</a><p align='center'>使用者:{{request.user}}</p>
+    {% else %}
+    {% endif %}
+       <h1>課程:{{ mems.lessons }}的測驗結果,總共答對<span style="color:red;">{{ mems.score }}</span>/30題</h1>
+       <table style="width:50%">
+             <tr>
+		 <th>題號</th>
+		 <th>題目</th>
+                 <th>是否正確</th>
+                 <th>答題結果</th>
+             </tr>
+	     <tr>
+                 <td>1</td>
+		 <td>{{ mems.topic1 }}</td>
+		 <td><span style="color:red;">{{ mems.result1 }}</span></td>
+                 <td>{{ mems.answer1 }}</td>
+	     </tr>
+             <tr>
+                 <td>2</td>
+                 <td>{{ mems.topic2 }}</td>
+                 <td><span style="color:red;">{{ mems.result2 }}</span></td>
+                 <td>{{ mems.answer2 }}</td>
+             </tr>
+             <tr>
+                 <td>3</td>
+                 <td>{{ mems.topic3 }}</td>
+                 <td><span style="color:red;">{{ mems.result3 }}</span></td>
+                 <td>{{ mems.answer3 }}</td>
+             </tr>
+             <tr>
+                 <td>4</td>
+                 <td>{{ mems.topic4 }}</td>
+                 <td><span style="color:red;">{{ mems.result4 }}</span></td>
+                 <td>{{ mems.answer4 }}</td>
+             </tr>
+             <tr>
+                 <td>5</td>
+                 <td>{{ mems.topic5 }}</td>
+                 <td><span style="color:red;">{{ mems.result5 }}</span></td>
+                 <td>{{ mems.answer5 }}</td>
+             </tr>
+             <tr>
+                 <td>6</td>
+                 <td>{{ mems.topic6 }}</td>
+                 <td><span style="color:red;">{{ mems.result6 }}</span></td>
+                 <td>{{ mems.answer6 }}</td>
+             </tr>
+             <tr>
+                 <td>7</td>
+                 <td>{{ mems.topic7 }}</td>
+                 <td><span style="color:red;">{{ mems.result7 }}</span></td>
+                 <td>{{ mems.answer7 }}</td>
+             </tr>
+             <tr>
+                 <td>8</td>
+                 <td>{{ mems.topic8 }}</td>
+                 <td><span style="color:red;">{{ mems.result8 }}</span></td>
+                 <td>{{ mems.answer8 }}</td>
+             </tr>
+             <tr>
+                 <td>9</td>
+                 <td>{{ mems.topic9 }}</td>
+                 <td><span style="color:red;">{{ mems.result9 }}</span></td>
+                 <td>{{ mems.answer9 }}</td>
+             </tr>
+             <tr>
+                 <td>10</td>
+                 <td>{{ mems.topic10 }}</td>
+                 <td><span style="color:red;">{{ mems.result10 }}</span></td>
+                 <td>{{ mems.answer10 }}</td>
+             </tr>
+             <tr>
+                 <td>11</td>
+                 <td>{{ mems.topic11 }}</td>
+                 <td><span style="color:red;">{{ mems.result11 }}</span></td>
+                 <td>{{ mems.answer11 }}</td>
+             </tr>
+             <tr>
+                 <td>12</td>
+                 <td>{{ mems.topic12 }}</td>
+                 <td><span style="color:red;">{{ mems.result12 }}</span></td>
+                 <td>{{ mems.answer12 }}</td>
+             </tr>
+             <tr>
+                 <td>13</td>
+                 <td>{{ mems.topic13 }}</td>
+                 <td><span style="color:red;">{{ mems.result13 }}</span></td>
+                 <td>{{ mems.answer13 }}</td>
+             </tr>
+             <tr>
+                 <td>14</td>
+                 <td>{{ mems.topic14 }}</td>
+                 <td><span style="color:red;">{{ mems.result14 }}</span></td>
+                 <td>{{ mems.answer14 }}</span></td>
+             </tr>
+             <tr>
+                 <td>15</td>
+                 <td>{{ mems.topic15 }}</td>
+                 <td><span style="color:red;">{{ mems.result15 }}</span></td>
+                 <td>{{ mems.answer15 }}</td>
+             </tr>
+             <tr>
+                 <td>16</td>
+                 <td>{{ mems.topic16 }}</td>
+                 <td><span style="color:red;">{{ mems.result16 }}</span></td>
+                 <td>{{ mems.answer16 }}</td>
+             </tr>
+             <tr>
+                 <td>17</td>
+                 <td>{{ mems.topic17 }}</td>
+                 <td><span style="color:red;">{{ mems.result17 }}</span></td>
+                 <td>{{ mems.answer17 }}</td>
+             </tr>
+             <tr>
+                 <td>18</td>
+                 <td>{{ mems.topic18 }}</td>
+                 <td><span style="color:red;">{{ mems.result18 }}</span></td>
+                 <td>{{ mems.answer18 }}</td>
+             </tr>
+             <tr>
+                 <td>19</td>
+                 <td>{{ mems.topic19 }}</td>
+                 <td><span style="color:red;">{{ mems.result19 }}</span></td>
+                 <td>{{ mems.answer19 }}</td>
+             </tr>
+             <tr>
+                 <td>20</td>
+                 <td>{{ mems.topic20 }}</td>
+                 <td><span style="color:red;">{{ mems.result20 }}</span></td>
+                 <td>{{ mems.answer20 }}</td>
+             </tr>
+             <tr>
+                 <td>21</td>
+                 <td>{{ mems.topic21 }}</td>
+                 <td><span style="color:red;">{{ mems.result21 }}</span></td>
+                 <td>{{ mems.answer21 }}</td>
+             </tr>
+             <tr>
+                 <td>22</td>
+                 <td>{{ mems.topic22 }}</td>
+                 <td><span style="color:red;">{{ mems.result22 }}</span></td>
+                 <td>{{ mems.answer22 }}</td>
+             </tr>
+             <tr>
+                 <td>23</td>
+                 <td>{{ mems.topic23 }}</td>
+                 <td><span style="color:red;">{{ mems.result23 }}</span></td>
+                 <td>{{ mems.answer23 }}</td>
+             </tr>
+             <tr>
+                 <td>24</td>
+                 <td>{{ mems.topic24 }}</td>
+                 <td><span style="color:red;">{{ mems.result24 }}</span></td>
+                 <td>{{ mems.answer24 }}</td>
+             </tr>
+             <tr>
+                 <td>25</td>
+                 <td>{{ mems.topic25 }}</td>
+                 <td><span style="color:red;">{{ mems.result25 }}</span></td>
+                 <td>{{ mems.answer25 }}</td>
+             </tr>
+             <tr>
+                 <td>26</td>
+                 <td>{{ mems.topic26 }}</td>
+                 <td><span style="color:red;">{{ mems.result26 }}</span></td>
+                 <td>{{ mems.answer26 }}</td>
+             </tr>
+             <tr>
+                 <td>27</td>
+                 <td>{{ mems.topic27 }}</td>
+                 <td><span style="color:red;">{{ mems.result27 }}</span></td>
+                 <td>{{ mems.answer27 }}</td>
+             </tr>
+             <tr>
+                 <td>28</td>
+                 <td>{{ mems.topic28 }}</td>
+                 <td><span style="color:red;">{{ mems.result28 }}</span></td>
+                 <td>{{ mems.answer28 }}</td>
+             </tr>
+             <tr>
+                 <td>29</td>
+                 <td>{{ mems.topic29 }}</td>
+                 <td><span style="color:red;">{{ mems.result29 }}</span></td>
+                 <td>{{ mems.answer29 }}</td>
+             </tr>
+             <tr>
+                 <td>30</td>
+                 <td>{{ mems.topic30 }}</td>
+                 <td><span style="color:red;">{{ mems.result30 }}</span></td>
+                 <td>{{ mems.answer30 }}</td>
+             </tr>	      
+      </table> 
+</body>
+</html>

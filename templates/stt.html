@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+      <title>Test {{ vocc.number }}</title>
+      <meta charset='utf-8' />
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+ padding: 5px;
+}
+</style>
+</head>
+<body>
+<script type="text/javascript">
+var infoBox; // 訊息 label
+var textBox; // 最終的辨識訊息 text input
+//var tempBox; // 中間的辨識訊息 text input
+var startStopButton; // 「辨識/停止」按鈕
+var final_transcript = ''; // 最終的辨識訊息的變數
+var recognizing = false; // 是否辨識中
+var compar = ''; //來比對答案對或錯的標準答案
+var final_answer = ''; //使用者最後的答案
+var answer; //顯示出來的標準答案
+var correct=0; //答對總題數
+var final_score; //顯示出來的答對總題數
+var nu; //題號
+var history_record = new Array(30); //顯示出來的使用者辨識紀錄
+var hhh = new Array(30); //使用者辨識紀錄
+
+function startButton(event,id,string_ans) {
+  infoBox = document.getElementById("info"+id); // 取得訊息控制項 infoBox
+  //tempBox = document.getElementById("temp"+id); // 取得中間的辨識訊息控制項 tempBox
+  textBox = document.getElementById("text"+id); // 取得最終的辨識訊息控制項 textBox
+  answer = document.getElementById("an"+id);
+  compar = string_ans;
+  nu = id;
+  history_record[id] = document.getElementById("record"+id);  
+  startStopButton = document.getElementById("startStopButton"+id); // 取得「辨識/停止」這個按鈕控制項
+  langCombo = document.getElementById("langCombo"); // 取得「辨識語言」這個選擇控制項
+  if (recognizing) { // 如果正在辨識，則停止。
+    recognition.stop();
+  } else { // 否則就開始辨識
+    textBox.value = ''; // 清除最終的辨識訊息
+ 
+    final_transcript = ''; // 最終的辨識訊息變數
+    recognition.lang = langCombo.value; // 設定辨識語言
+    recognition.start(); // 開始辨識
+  }
+}
+
+  if (!('webkitSpeechRecognition' in window)) {  // 如果找不到 window.webkitSpeechRecognition 這個屬性
+  // 就是不支援語音辨識，要求使用者更新瀏覽器。 
+  infoBox.innerText = "本瀏覽器不支援語音辨識，請更換瀏覽器！(Chrome 25 版以上才支援語音辨識)";
+} else {
+  var recognition = new webkitSpeechRecognition(); // 建立語音辨識物件 webkitSpeechRecognition
+  recognition.continuous = false; // 設定連續辨識模式
+  recognition.interimResults = false; // 設定輸出中先結果。
+
+  recognition.onstart = function() { // 開始辨識
+    recognizing = true; // 設定為辨識中
+    startStopButton.value = "按此停止"; // 辨識中...按鈕改為「按此停止」。  
+    infoBox.innerText = "辨識中...";  // 顯示訊息為「辨識中」...
+  };
+
+	  recognition.onend = function() { // 辨識完成
+	    recognizing = false; // 設定為「非辨識中」
+	    startStopButton.value = "重新作答";  // 辨識完成...按鈕改為「開始辨識」。
+	    infoBox.innerText = ""; // 不顯示訊息
+	  };
+
+	  recognition.onresult = function(event) { // 辨識有任何結果時
+	    var interim_transcript = ''; // 中間結果
+	    for (var i = event.resultIndex; i < event.results.length; ++i) { // 對於每一個辨識結果
+	      if (event.results[i].isFinal) { // 如果是最終結果
+		final_transcript += event.results[i][0].transcript; // 將其加入最終結果
+	      }
+	//else { // 否則
+	        //interim_transcript += event.results[i][0].transcript; // 將其加入中間結果中
+	      //}
+	    }
+	  if (final_transcript.trim().length > 0) // 如果有最終辨識文字
+	    {
+		final_answer = final_transcript;
+                if (final_answer == compar){
+                      textBox.value = 'Correct answer!';
+                      answer.value = final_answer;
+                      hhh[nu] = answer.value;
+                      history_record[nu].value += ' '+hhh[nu];     
+                      correct = correct+1;
+                }
+                else{
+                      textBox.value = 'Wrong';
+                      answer.value = final_answer;
+                      hhh[nu] = answer.value;
+                      history_record[nu].value += ' '+hhh[nu];  
+                }   
+ 	    }
+          //if (interim_transcript.trim().length > 0) // 如果有中間辨識文字
+                //tempBox.value = interim_transcript; // 顯示中間辨識文字
+
+		//answer.vale = final_transcript;
+		//answer=document.getElementById("an"+id);
+		//textBox.value = final_transcript; // 顯示最終辨識文字
+          //if(final_answer.match(compar=null))
+                //textBox.value="please try again!";
+          /*if (final_answer == compar){
+		textBox.value = 'Correct answer!';
+                answer.value = final_answer;
+		hhh[nu] += ' '+answer.value;
+		history_record[nu].value = hhh[nu]; 	
+		correct = correct+1;
+	  }
+          else{
+                textBox.value = 'Wrong';
+		answer.value = final_answer;
+		hhh[nu] += ' '+answer.value;
+                history_record[nu].value = hhh[nu];  
+          }*/   
+	//    if (interim_transcript.trim().length > 0) // 如果有中間辨識文字
+	//        tempBox.value = interim_transcript; // 顯示中間辨識文字
+	  };
+	}
+function score_final(){
+	final_score = document.getElementById("so");
+	final_score.value = correct;
+}
+function finish(){
+	alert("已完成測驗！！   請按最下方按鈕查看成績");
+}	
+</script>
+    <form action="" method="post"> {% csrf_token %}
+    <!--{% if request.user.is_authenticated %}
+    <p align="center">使用者:{{request.user}}</p>
+    <input value="{{request.user}}" type="text" name="username"/>
+    {% else %}
+    {% endif %}-->
+    <p align="center">使用者:{{member.username}}</p>
+    <input value="{{member.username}}" type="hidden" name="username"/> 
+    {% if vocc.vocabulary_set.all %}
+<h1>Test {{ vocc.name }}</h1>
+    <p>此測驗共有{{ vocc.vocabulary_set.all|length }}個單字</p>
+
+<table border="1" style="width:100%">
+  <tr>
+      <td>
+  <table border="1" style="width:100%">
+  {% for vo in vocc.vocabulary_set.all %} 
+  <tr> 
+    <td>{{ vo.number }}</td> 
+    <td>{{ vo.name }}</td>
+    <td>{{ vo.pos }}</td>		
+    <td>{{ vo.tran }}</td>
+    <td><input id="startStopButton{{ vo.number }}" type="button" name="bu1" value="尚未作答" onclick="startButton(event,{{ vo.number }},'{{ vo.name }}')"/>
+    	<label id="info{{ vo.number }}"></label>
+        <!--<input value="{{ vo.name }}" type="text" name="topic{{ vo.number }}"/>-->
+        <input id="an{{ vo.number }}" type="text" name="answer{{ vo.number }}"/>
+	<input id="record{{ vo.number }}" type="hidden" name="history{{ vo.number }}"/>
+        <input id="text{{ vo.number }}" type="hidden" name="result{{ vo.number }}"/>
+    </td>
+  </tr>    
+    {% endfor %}
+  </table>
+      </td>
+      <td>        
+  <table border="1" style="width:100%;font-size:20px" >	
+     <tr>
+         <tr><td>{{transform1.kk}}</td></tr>
+         <tr><td>{{transform2.kk}}</td></tr>
+         <tr><td>{{transform3.kk}}</td></tr>
+         <tr><td>{{transform4.kk}}</td></tr>
+         <tr><td>{{transform5.kk}}</td></tr>
+         <tr><td>{{transform6.kk}}</td></tr>
+         <tr><td>{{transform7.kk}}</td></tr>
+         <tr><td>{{transform8.kk}}</td></tr>
+         <tr><td>{{transform9.kk}}</td></tr>
+         <tr><td>{{transform10.kk}}</td></tr>
+         <tr><td>{{transform11.kk}}</td></tr>
+         <tr><td>{{transform12.kk}}</td></tr>
+         <tr><td>{{transform13.kk}}</td></tr>
+         <tr><td>{{transform14.kk}}</td></tr>
+         <tr><td>{{transform15.kk}}</td></tr>
+         <tr><td>{{transform16.kk}}</td></tr>
+         <tr><td>{{transform17.kk}}</td></tr>
+         <tr><td>{{transform18.kk}}</td></tr>
+         <tr><td>{{transform19.kk}}</td></tr>
+         <tr><td>{{transform20.kk}}</td></tr>
+         <tr><td>{{transform21.kk}}</td></tr>
+         <tr><td>{{transform22.kk}}</td></tr>
+         <tr><td>{{transform23.kk}}</td></tr>
+         <tr><td>{{transform24.kk}}</td></tr>
+         <tr><td>{{transform25.kk}}</td></tr>
+         <tr><td>{{transform26.kk}}</td></tr>
+         <tr><td>{{transform27.kk}}</td></tr>
+         <tr><td>{{transform28.kk}}</td></tr>
+         <tr><td>{{transform29.kk}}</td></tr>
+         <tr><td>{{transform30.kk}}</td></tr>
+     </tr>
+  </table>
+      </td>
+      </tr>
+  </table>
+    <input type="submit" type="button" name="button1" value="比對音標" />      
+    <input type="submit" type="button" name="button2" value="完成測驗" onclick="score_final(),finish()"/>
+    <input id="so" type="text" name="score">
+    <input value="{{ member.id }}" type="hidden" name="member">
+    <input value="{{ vocc.id }}" type="hidden" name="vocaa">
+    <input type="button" value="查看成績" onclick="location.href='/result/'">
+    </form>
+  {% else %}
+    <p>本課程沒有單字</p>
+  {% endif %}	  
+辨識語言：
+<select id="langCombo">
+    <option value="en-US">英文(美國)</option>
+</select>
+</body>
+</html>

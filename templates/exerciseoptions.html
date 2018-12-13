@@ -1,0 +1,272 @@
+<!DOCTYPE>
+<html>
+<head>
+     <title></title>
+     <meta charset='utf-8' />
+     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+     {% load staticfiles %}
+     <link rel="stylesheet" href="{% static 'asset/css/main.css' %}">
+     <style type="text/css">
+     #aside{
+     width: 20%;
+     height: ;
+     text-align: center;
+     background-color: #444444;
+     padding:px;
+     float: left;
+     font-size: px;
+     font-family: serif;
+     }
+     #section{
+     width: ;
+     height: ;
+     line-height: em;
+     padding: px;
+     float: center;
+     font-size: px;
+     }
+     </style>
+</head>
+<body>
+        <!-- Header -->
+			<header id="header">
+				<div class="inner">
+					<a href="" class="logo">Welcome to English Pronunciation</a>
+					<nav id="nav">
+						{% if request.user.is_authenticated %}
+						<a href="">{{request.user}}, 您好</a>
+			                        {% else %}
+						<a href="/accounts/login/">登入</a>
+						{% endif %}
+						<a href="/accounts/register/">註冊</a>
+					</nav>
+				</div>
+			</header>
+			<a href="#menu" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+
+		<!-- Banner -->
+			<section id="banner">
+				<div class="inner">
+					<ul class="actions">
+					</ul>
+				</div>
+			</section>
+
+	<!-- aside -->
+    <aside id="aside">
+    <h3>Pretest pronunciation</h3>
+      <a href="/pretestspeakinglist/">pretest pronunciation report</a>
+    <h3>Pronunciation Exercise</h3>
+      <a href="/exerciseoptions/">exercise group options</a></br>
+      <a href="/exerciseresult/">exercise report</a>
+    <h3>Posttest pronunciation</h3>
+      <ul class="actions">
+	  <li><a href="/pretestspeakinglist/" class="button special">posttest</a></li>
+      </ul>
+      <!--<input value="posttest pronunciation" {{hi}} type="submit"/><br><p><span style="color:white">{{a}}</br>註：此測驗只能測驗一次</span></p><span style="color:red">測驗時,請勿中途離開！</br> 每題只能測驗一次！</br>測驗時間約為5分鐘！</span></br>-->
+      <a {{ma}}href="/posttestspeakinglist/">posttest pronunciation report</a>
+      <h2>答錯統計</h2>
+<h4>GROUP A 母音</h4>
+    <p>母音'æ',答錯{{a1}}題</br>
+    母音'e',答錯{{a2}}題</br>
+    母音'ɛ',答錯{{a3}}題</p>
+<h4>GROUP B 母音</h4>
+    <p>母音'i',答錯{{a4}}題</br>
+    母音'ɪ',答錯{{a5}}題</p>
+<h4>GROUP C 母音</h4>
+    <p>母音'u',答錯{{a6}}題</br>
+    母音'ʊ',答錯{{a7}}題</p>
+<h4>GROUP D 母音</h4>
+    <p>母音'ʌ',答錯{{a8}}題</br>
+    母音'ɑ',答錯{{a9}}題</p>
+<h4>GROUP E 母音</h4>
+    <p>母音'o',答錯{{a10}}題</br>
+    母音'ɔ',答錯{{a11}}題</p>
+	</aside>
+        <section>
+<center><h2>Exercise</h2>
+<section id="three">
+    <div class="inner">
+        <article>
+<form action="" method="post"> {% csrf_token %}
+<input value="{{aa.0}}" type="hidden" name="topic1"/>
+<input value="{{aa.1}}" type="hidden" name="topic2"/>
+<input value="{{aa.2}}" type="hidden" name="topic3"/>
+<input value="{{aa.3}}" type="hidden" name="topic4"/>
+<input value="{{aa.4}}" type="hidden" name="topic5"/>
+<input value="{{aa.5}}" type="hidden" name="topic6"/>
+<input value="{{aa.6}}" type="hidden" name="topic7"/>
+<input value="{{aa.7}}" type="hidden" name="topic8"/>
+<input value="{{aa.8}}" type="hidden" name="topic9"/>
+<input value="{{aa.9}}" type="hidden" name="topic10"/>
+<input value="{{aa.10}}" type="hidden" name="topic11"/>
+<input value="{{aa.11}}" type="hidden" name="topic12"/>
+<input value="{{aa.12}}" type="hidden" name="topic13"/>
+<input value="{{aa.13}}" type="hidden" name="topic14"/>
+<input value="{{aa.14}}" type="hidden" name="topic15"/>
+<input value="{{aa.15}}" type="hidden" name="topic16"/>
+<input value="{{aa.16}}" type="hidden" name="topic17"/>
+<input value="{{aa.17}}" type="hidden" name="topic18"/>
+<input value="{{aa.18}}" type="hidden" name="topic19"/>
+<input value="{{aa.19}}" type="hidden" name="topic20"/>
+<input value="{{member.id}}" type="hidden" name="user"/>
+<input value="1" type="hidden" name="groups"/>
+	    <div class="content">
+		<span class="icon fa-laptop"></span>
+		<header>
+		    <h3>æ, e, ɛ</h3>
+		</header>
+		<ul class="actions">
+		    <li><input type="submit" value="GROUP A" class="button special"></li>
+		</ul>
+	    </div>
+        </form>
+	</article>
+        <article>
+<form action="" method="post"> {% csrf_token %}
+<input value="{{bb.0}}" type="hidden" name="topic1"/>
+<input value="{{bb.1}}" type="hidden" name="topic2"/>
+<input value="{{bb.2}}" type="hidden" name="topic3"/>
+<input value="{{bb.3}}" type="hidden" name="topic4"/>
+<input value="{{bb.4}}" type="hidden" name="topic5"/>
+<input value="{{bb.5}}" type="hidden" name="topic6"/>
+<input value="{{bb.6}}" type="hidden" name="topic7"/>
+<input value="{{bb.7}}" type="hidden" name="topic8"/>
+<input value="{{bb.8}}" type="hidden" name="topic9"/>
+<input value="{{bb.9}}" type="hidden" name="topic10"/>
+<input value="{{bb.10}}" type="hidden" name="topic11"/>
+<input value="{{bb.11}}" type="hidden" name="topic12"/>
+<input value="{{bb.12}}" type="hidden" name="topic13"/>
+<input value="{{bb.13}}" type="hidden" name="topic14"/>
+<input value="{{bb.14}}" type="hidden" name="topic15"/>
+<input value="{{bb.15}}" type="hidden" name="topic16"/>
+<input value="{{bb.16}}" type="hidden" name="topic17"/>
+<input value="{{bb.17}}" type="hidden" name="topic18"/>
+<input value="{{bb.18}}" type="hidden" name="topic19"/>
+<input value="{{bb.19}}" type="hidden" name="topic20"/>
+<input value="{{member.id}}" type="hidden" name="user"/>
+<input value="2" type="hidden" name="groups"/>
+	    <div class="content">
+		<span class="icon fa-laptop"></span>
+		<header>
+		    <h3>i, ɪ</h3>
+		</header>
+		<ul class="actions">
+		    <li><input type="submit" value="GROUP B" class="button special"></li>
+		</ul>
+	     </div>
+        </form>
+	</article>
+        <article>
+<form action="" method="post"> {% csrf_token %}
+<input value="{{cc.0}}" type="hidden" name="topic1"/>
+<input value="{{cc.1}}" type="hidden" name="topic2"/>
+<input value="{{cc.2}}" type="hidden" name="topic3"/>
+<input value="{{cc.3}}" type="hidden" name="topic4"/>
+<input value="{{cc.4}}" type="hidden" name="topic5"/>
+<input value="{{cc.5}}" type="hidden" name="topic6"/>
+<input value="{{cc.6}}" type="hidden" name="topic7"/>
+<input value="{{cc.7}}" type="hidden" name="topic8"/>
+<input value="{{cc.8}}" type="hidden" name="topic9"/>
+<input value="{{cc.9}}" type="hidden" name="topic10"/>
+<input value="{{cc.10}}" type="hidden" name="topic11"/>
+<input value="{{cc.11}}" type="hidden" name="topic12"/>
+<input value="{{cc.12}}" type="hidden" name="topic13"/>
+<input value="{{cc.13}}" type="hidden" name="topic14"/>
+<input value="{{cc.14}}" type="hidden" name="topic15"/>
+<input value="{{cc.15}}" type="hidden" name="topic16"/>
+<input value="{{cc.16}}" type="hidden" name="topic17"/>
+<input value="{{cc.17}}" type="hidden" name="topic18"/>
+<input value="{{cc.18}}" type="hidden" name="topic19"/>
+<input value="{{cc.19}}" type="hidden" name="topic20"/>
+<input value="{{member.id}}" type="hidden" name="user"/>
+<input value="3" type="hidden" name="groups"/>
+	    <div class="content">
+		<span class="icon fa-laptop"></span>
+		<header>
+		    <h3>u, ʊ</h3>
+		</header>
+		<ul class="actions">
+		    <li><input type="submit" value="GROUP C" class="button special"></li>
+		</ul>
+	    </div>
+	</form>
+	</article> 
+    </div>
+</section>
+<section id="three">
+    <div class="inner">
+	<article>
+<form action="" method="post"> {% csrf_token %}
+<input value="{{dd.0}}" type="hidden" name="topic1"/>
+<input value="{{dd.1}}" type="hidden" name="topic2"/>
+<input value="{{dd.2}}" type="hidden" name="topic3"/>
+<input value="{{dd.3}}" type="hidden" name="topic4"/>
+<input value="{{dd.4}}" type="hidden" name="topic5"/>
+<input value="{{dd.5}}" type="hidden" name="topic6"/>
+<input value="{{dd.6}}" type="hidden" name="topic7"/>
+<input value="{{dd.7}}" type="hidden" name="topic8"/>
+<input value="{{dd.8}}" type="hidden" name="topic9"/>
+<input value="{{dd.9}}" type="hidden" name="topic10"/>
+<input value="{{dd.10}}" type="hidden" name="topic11"/>
+<input value="{{dd.11}}" type="hidden" name="topic12"/>
+<input value="{{dd.12}}" type="hidden" name="topic13"/>
+<input value="{{dd.13}}" type="hidden" name="topic14"/>
+<input value="{{dd.14}}" type="hidden" name="topic15"/>
+<input value="{{dd.15}}" type="hidden" name="topic16"/>
+<input value="{{dd.16}}" type="hidden" name="topic17"/>
+<input value="{{dd.17}}" type="hidden" name="topic18"/>
+<input value="{{dd.18}}" type="hidden" name="topic19"/>
+<input value="{{dd.19}}" type="hidden" name="topic20"/>
+<input value="{{member.id}}" type="hidden" name="user"/>
+<input value="4" type="hidden" name="groups"/>
+	    <div class="content">
+		<span class="icon fa-laptop"></span>
+		<header>
+		    <h3>ʌ, ɑ</h3>
+		</header>
+		<ul class="actions">
+		    <li><input type="submit" value="GROUP D" class="button special"></li>
+		</ul>
+	    </div>
+        </form>
+	</article>
+        <article>
+<form action="" method="post"> {% csrf_token %}
+<input value="{{ee.0}}" type="hidden" name="topic1"/>
+<input value="{{ee.1}}" type="hidden" name="topic2"/>
+<input value="{{ee.2}}" type="hidden" name="topic3"/>
+<input value="{{ee.3}}" type="hidden" name="topic4"/>
+<input value="{{ee.4}}" type="hidden" name="topic5"/>
+<input value="{{ee.5}}" type="hidden" name="topic6"/>
+<input value="{{ee.6}}" type="hidden" name="topic7"/>
+<input value="{{ee.7}}" type="hidden" name="topic8"/>
+<input value="{{ee.8}}" type="hidden" name="topic9"/>
+<input value="{{ee.9}}" type="hidden" name="topic10"/>
+<input value="{{ee.10}}" type="hidden" name="topic11"/>
+<input value="{{ee.11}}" type="hidden" name="topic12"/>
+<input value="{{ee.12}}" type="hidden" name="topic13"/>
+<input value="{{ee.13}}" type="hidden" name="topic14"/>
+<input value="{{ee.14}}" type="hidden" name="topic15"/>
+<input value="{{ee.15}}" type="hidden" name="topic16"/>
+<input value="{{ee.16}}" type="hidden" name="topic17"/>
+<input value="{{ee.17}}" type="hidden" name="topic18"/>
+<input value="{{ee.18}}" type="hidden" name="topic19"/>
+<input value="{{ee.19}}" type="hidden" name="topic20"/>
+<input value="{{member.id}}" type="hidden" name="user"/>
+<input value="5" type="hidden" name="groups"/>
+	    <div class="content">
+		<span class="icon fa-laptop"></span>
+		<header>
+		    <h3>o, ɔ</h3>
+		</header>
+		<ul class="actions">
+		    <li><input type="submit" value="GROUP E" class="button special"></li>
+		</ul>
+	    </div>
+        </form>
+	</article>
+    </div>
+</section></center>
+</body>
+</html>

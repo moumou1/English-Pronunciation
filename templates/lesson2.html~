@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       <title>Lesson 1</title>
+       <meta charset='utf-8' />
+    </head>
+<body>
+<h1>Lesson 1</h1>   
+<form action="/lesson/" method="get">
+<table>
+    <tr>
+	<th>選取</th>
+	<th>單字</th>
+	<th>詞性</th>
+	<th>翻譯</th>
+    </tr>
+ 
+  {% for r in voc %} 
+  <tr>
+    <td> <a href="/lesson/{{r.id}}/"> lesson </a> </td>
+    <td>{{ r.name }}</td>
+    <td>{{ r.pos }}</td>		
+    <td>{{ r.tran }}</td>
+  </tr>
+  {% endfor %}
+</table>
+</form>   
+</body>
+</html>
+ 

@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <meta charset='utf-8' />
+     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+     {% load staticfiles %}
+     <link rel="stylesheet" href="{% static 'asset/css/main.css' %}">
+     <style type="text/css">
+     #aside{
+     width: 20%;
+     height: ;
+     text-align: center;
+     background-color: #444444;
+     padding:px;
+     float: left;
+     font-size: px;
+     font-family: serif;
+     }
+     #section{
+     width: ;
+     height: ;
+     line-height: em;
+     padding: px;
+     float: center;
+     font-size: px;
+     }
+     th, td{
+     text-align: center;
+     }
+     </style>
+</head>
+<body>
+     <!-- Header -->
+			<header id="header">
+				<div class="inner">
+					<a href="" class="logo">Welcome to English Pronunciation</a>
+					<nav id="nav">
+						{% if request.user.is_authenticated %}
+						<a href="">{{request.user}}, 您好</a>
+						<a href="/accounts/logout/">登出</a>
+			                        {% else %}
+						<a href="/accounts/login/">登入</a>
+						{% endif %}
+						<a href="/accounts/register/">註冊</a>
+					</nav>
+				</div>
+			</header>
+			<a href="#menu" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+
+		<!-- Banner -->
+			<section id="banner">
+				<div class="inner">
+					<ul class="actions">
+					</ul>
+				</div>
+			</section>
+
+	<!-- aside -->
+    <aside id="aside">
+    <h3>Pretest pronunciation</h3>
+      <a href="/pretestspeakinglist/">pretest pronunciation report</a>
+    <h3>Pronunciation Exercise</h3>
+      <a href="/exerciseoptions/">exercise group options</a></br>
+      <a href="/exerciseresult/">exercise report</a>
+    <h3>Posttest pronunciation</h3>
+      <a {{ma}}href="/posttestspeakinglist/">posttest pronunciation report</a>
+  </br>
+  </br>
+  </br>
+  </br>
+  </br>
+  </br>
+  </br>
+  </br>
+  </br>
+  </br>
+  </br>
+  </br>
+  </br>
+  </br>
+  </br>
+  </br>
+  </br>
+  </br>
+  </br>
+  </br>
+  </br>
+  </br>
+  </br>
+  </br>
+  </br>
+   </aside>
+
+  <section>
+  <center><h1>個人錯誤報表</h1>
+  <div class="table-wrapper">
+    <table>
+	<tr>
+	    <td>
+    <table class="alt">
+	<thead>
+	    <tr>
+		<th>前測發音錯誤組合</th>
+		<th>次數</th>
+	    </tr>
+	</thead>
+	<tbody>
+	    <tr>
+		<td>{% for d in lm %}{{d}}{% endfor %}</td>
+		<td></td>
+	    </tr>
+	    <tr>
+		<td>{% for d in st0 %}{{d}}{% endfor %}</td>
+		<td>{{statisnumm0}}</td>
+	    </tr>
+	    <tr>
+		<td>{% for d in st1 %}{{d}}{% endfor %}</td>
+		<td>{{statisnumm1}}</td>
+	    </tr>
+	    <tr>
+		<td>{% for d in st2 %}{{d}}{% endfor %}</td>
+		<td>{{statisnumm2}}</td>
+	    </tr>
+	    <tr>
+		<td>{% for d in st3 %}{{d}}{% endfor %}</td>
+		<td>{{statisnumm3}}</td>
+	    </tr>
+	    <tr>
+		<td>{% for d in st4 %}{{d}}{% endfor %}</td>
+		<td>{{statisnumm4}}</td>
+	    </tr>
+	    <tr>
+		<td>{% for d in st5 %}{{d}}{% endfor %}</td>
+		<td>{{statisnumm5}}</td>
+	    </tr>
+	    <tr>
+		<td>{% for d in st6 %}{{d}}{% endfor %}</td>
+		<td>{{statisnumm6}}</td>
+	    </tr>
+	    <tr>
+		<td>{% for d in st7 %}{{d}}{% endfor %}</td>
+		<td>{{statisnumm7}}</td>
+	    </tr>
+	    <tr>
+		<td>{% for d in st8 %}{{d}}{% endfor %}</td>
+		<td>{{statisnumm8}}</td>
+	    </tr>
+	    <tr>
+		<td>{% for d in st9 %}{{d}}{% endfor %}</td>
+		<td>{{statisnumm9}}</td>
+	    </tr>
+	    <tr>
+		<td>{% for d in st10 %}{{d}}{% endfor %}</td>
+		<td>{{statisnumm10}}</td>
+	    </tr>
+	    <tr>
+		<td>{% for d in st11 %}{{d}}{% endfor %}</td>
+		<td>{{statisnumm11}}</td>
+	    </tr>
+	    <tr>
+		<td>{% for d in st12 %}{{d}}{% endfor %}</td>
+		<td>{{statisnumm12}}</td>
+	    </tr>
+	    <tr>
+		<td>{% for d in st13 %}{{d}}{% endfor %}</td>
+		<td>{{statisnumm13}}</td>
+	    </tr>
+	    <tr>
+		<td>{% for d in st14 %}{{d}}{% endfor %}</td>
+		<td>{{statisnumm14}}</td>
+	    </tr>
+	    <tr>
+		<td>{% for d in st15 %}{{d}}{% endfor %}</td>
+		<td>{{statisnumm15}}</td>
+	    </tr>
+	    <tr>
+		<td>{% for d in st16 %}{{d}}{% endfor %}</td>
+		<td>{{statisnumm16}}</td>
+	    </tr>
+	    <tr>
+		<td>{% for d in st17 %}{{d}}{% endfor %}</td>
+		<td>{{statisnumm17}}</td>
+	    </tr>
+	    <tr>
+		<td>{% for d in st18 %}{{d}}{% endfor %}</td>
+		<td>{{statisnumm18}}</td>
+	    </tr>
+	    <tr>
+		<td>{% for d in st19 %}{{d}}{% endfor %}</td>
+		<td>{{statisnumm19}}</td>
+	    </tr>
+	    <tr>
+		<td>{% for d in st20 %}{{d}}{% endfor %}</td>
+		<td>{{statisnumm20}}</td>
+	    </tr>
+	    <tr>
+		<td>{% for d in st21 %}{{d}}{% endfor %}</td>
+		<td>{{statisnumm21}}</td>
+	    </tr>
+	    <tr>
+		<td>{% for d in st22 %}{{d}}{% endfor %}</td>
+		<td>{{statisnumm22}}</td>
+	    </tr>
+	    <tr>
+		<td>{% for d in st23 %}{{d}}{% endfor %}</td>
+		<td>{{statisnumm23}}</td>
+	    </tr>
+	    <tr>
+		<td>{% for d in st24 %}{{d}}{% endfor %}</td>
+		<td>{{statisnumm24}}</td>
+	    </tr>
+	    <tr>
+		<td>{% for d in st25 %}{{d}}{% endfor %}</td>
+		<td>{{statisnumm25}}</td>
+	    </tr>
+	    <tr>
+		<td>{% for d in st26 %}{{d}}{% endfor %}</td>
+		<td>{{statisnumm26}}</td>
+	    </tr>
+	    <tr>
+		<td>{% for d in st27 %}{{d}}{% endfor %}</td>
+		<td>{{statisnumm27}}</td>
+	    </tr>
+	    <tr>
+		<td>{% for d in st28 %}{{d}}{% endfor %}</td>
+		<td>{{statisnumm28}}</td>
+	    </tr>
+	    <tr>
+		<td>{% for d in st29 %}{{d}}{% endfor %}</td>
+		<td>{{statisnumm29}}</td>
+	    </tr>
+	    <tr>
+		<td>{% for d in st30 %}{{d}}{% endfor %}</td>
+		<td>{{statisnumm30}}</td>
+	    </tr>
+	</tbody>
+    </table>
+	    </td>
+	    <td>
+  <div class"table-wrapper">
+    <table class="alt">
+	<thead>
+	    <tr>
+		<th>後測發音錯誤組合</th>
+		<th>次數</th>
+	    </tr>
+	</thead>
+	<tbody>
+	    <tr>
+		<td>{% for d in lmp %}{{d}}{% endfor %}</td>
+		<td></td>
+	    </tr>
+	    <tr>
+		<td>{% for d in stp0 %}{{d}}{% endfor %}</td>
+		<td>{{statisnummp0}}</td>
+	    </tr>
+	    <tr>
+		<td>{% for d in stp1 %}{{d}}{% endfor %}</td>
+		<td>{{statisnummp1}}</td>
+	    </tr>
+	    <tr>
+		<td>{% for d in stp2 %}{{d}}{% endfor %}</td>
+		<td>{{statisnummp2}}</td>
+	    </tr>
+	    <tr>
+		<td>{% for d in stp3 %}{{d}}{% endfor %}</td>
+		<td>{{statisnummp3}}</td>
+	    </tr>
+	    <tr>
+		<td>{% for d in stp4 %}{{d}}{% endfor %}</td>
+		<td>{{statisnummp4}}</td>
+	    </tr>
+	    <tr>
+		<td>{% for d in stp5 %}{{d}}{% endfor %}</td>
+		<td>{{statisnummp5}}</td>
+	    </tr>
+	    <tr>
+		<td>{% for d in stp6 %}{{d}}{% endfor %}</td>
+		<td>{{statisnummp6}}</td>
+	    </tr>
+	    <tr>
+		<td>{% for d in stp7 %}{{d}}{% endfor %}</td>
+		<td>{{statisnummp7}}</td>
+	    </tr>
+	    <tr>
+		<td>{% for d in stp8 %}{{d}}{% endfor %}</td>
+		<td>{{statisnummp8}}</td>
+	    </tr>
+	    <tr>
+		<td>{% for d in stp9 %}{{d}}{% endfor %}</td>
+		<td>{{statisnummp9}}</td>
+	    </tr>
+	    <tr>
+		<td>{% for d in stp10 %}{{d}}{% endfor %}</td>
+		<td>{{statisnummp10}}</td>
+	    </tr>
+	    <tr>
+		<td>{% for d in stp11 %}{{d}}{% endfor %}</td>
+		<td>{{statisnummp11}}</td>
+	    </tr>
+	    <tr>
+		<td>{% for d in stp12 %}{{d}}{% endfor %}</td>
+		<td>{{statisnummp12}}</td>
+	    </tr>
+	    <tr>
+		<td>{% for d in stp13 %}{{d}}{% endfor %}</td>
+		<td>{{statisnummp13}}</td>
+	    </tr>
+	    <tr>
+		<td>{% for d in stp14 %}{{d}}{% endfor %}</td>
+		<td>{{statisnummp14}}</td>
+	    </tr>
+	    <tr>
+		<td>{% for d in stp15 %}{{d}}{% endfor %}</td>
+		<td>{{statisnummp15}}</td>
+	    </tr>
+	    <tr>
+		<td>{% for d in stp16 %}{{d}}{% endfor %}</td>
+		<td>{{statisnummp16}}</td>
+	    </tr>
+	    <tr>
+		<td>{% for d in stp17 %}{{d}}{% endfor %}</td>
+		<td>{{statisnummp17}}</td>
+	    </tr>
+	    <tr>
+		<td>{% for d in stp18 %}{{d}}{% endfor %}</td>
+		<td>{{statisnummp18}}</td>
+	    </tr>
+	    <tr>
+		<td>{% for d in stp19 %}{{d}}{% endfor %}</td>
+		<td>{{statisnummp19}}</td>
+	    </tr>
+	    <tr>
+		<td>{% for d in stp20 %}{{d}}{% endfor %}</td>
+		<td>{{statisnummp20}}</td>
+	    </tr>
+	    <tr>
+		<td>{% for d in stp21 %}{{d}}{% endfor %}</td>
+		<td>{{statisnummp21}}</td>
+	    </tr>
+	    <tr>
+		<td>{% for d in stp22 %}{{d}}{% endfor %}</td>
+		<td>{{statisnummp22}}</td>
+	    </tr>
+	    <tr>
+		<td>{% for d in stp23 %}{{d}}{% endfor %}</td>
+		<td>{{statisnummp23}}</td>
+	    </tr>
+	    <tr>
+		<td>{% for d in stp24 %}{{d}}{% endfor %}</td>
+		<td>{{statisnummp24}}</td>
+	    </tr>
+	    <tr>
+		<td>{% for d in stp25 %}{{d}}{% endfor %}</td>
+		<td>{{statisnummp25}}</td>
+	    </tr>
+	    <tr>
+		<td>{% for d in stp26 %}{{d}}{% endfor %}</td>
+		<td>{{statisnummp26}}</td>
+	    </tr>
+	    <tr>
+		<td>{% for d in stp27 %}{{d}}{% endfor %}</td>
+		<td>{{statisnummp27}}</td>
+	    </tr>
+	    <tr>
+		<td>{% for d in stp28 %}{{d}}{% endfor %}</td>
+		<td>{{statisnummp28}}</td>
+	    </tr>
+	    <tr>
+		<td>{% for d in stp29 %}{{d}}{% endfor %}</td>
+		<td>{{statisnummp29}}</td>
+	    </tr>
+	    <tr>
+		<td>{% for d in stp30 %}{{d}}{% endfor %}</td>
+		<td>{{statisnummp30}}</td>
+	    </tr>
+	</tbody>
+    </table>
+  </div>
+  </div></center>
+  </section>
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+	</body>
+</html>

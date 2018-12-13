@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <meta charset='utf-8'/>
+     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+     {% load staticfiles %}
+     <link rel="stylesheet" href="{% static 'asset/css/main.css' %}">
+     <style type="text/css">
+     #aside{
+     width: 20%;
+     height: ;
+     text-align: center;
+     background-color: #444444;
+     padding:px;
+     float: left;
+     font-size: px;
+     }
+     #section{
+     width: ;
+     height: ;
+     line-height: em;
+     padding: px;
+     float: center;
+     font-size: px;
+     }
+     table th{
+     text-align: center;
+     font-size: 25px;
+     }
+     table td{
+     text-align: center;
+     font-size: 25px;
+     }
+
+     </style>
+</head>
+<body>
+        <!-- Header -->
+			<header id="header">
+				<div class="inner">
+					<a href="" class="logo">Welcome to English Pronunciation</a>
+					<nav id="nav">
+						{% if request.user.is_authenticated %}
+						<a href="">{{request.user}}, 您好</a>
+			                        {% else %}
+						<a href="/accounts/login/">登入</a>
+						{% endif %}
+						<a href="/accounts/register/">註冊</a>
+					</nav>
+				</div>
+			</header>
+			<a href="#menu" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+
+		<!-- Banner -->
+			<section id="banner">
+				<div class="inner">
+					<ul class="actions">
+					</ul>
+				</div>
+			</section>
+
+	<!-- aside -->
+    <aside id="aside">
+    <h3>Pretest pronunciation</h3>
+      <a href="/pretestspeakinglist/">pretest pronunciation report</a>
+    <h3>Pronunciation Exercise</h3>
+      <a href="/exerciseoptions/">exercise group options</a></br>
+      <a href="/exerciseresult/">exercise report</a>
+    <h3>Posttest pronunciation</h3>
+      <ul class="actions">
+	  <li><a href="/pretestspeakinglist/" class="button special">posttest</a></li>
+      </ul>
+      <!--<input value="posttest pronunciation" {{hi}} type="submit"/><br><p><span style="color:white">{{a}}</br>註：此測驗只能測驗一次</span></p><span style="color:red">測驗時,請勿中途離開！</br> 每題只能測驗一次！</br>測驗時間約為5分鐘！</span></br>-->
+      <a {{ma}}href="/posttestspeakinglist/">posttest pronunciation report</a>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br> 
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </aside>
+
+    <section>
+<center><h1>練習報告Group A(æ,e,ɛ),總共{{q}}個紀錄</h1></center>
+<div class="table-wrapper">
+  <table>
+      <tr>
+         <td>
+  <table>
+      <tr>
+	 <td>練習單字</td>
+         <td>練習紀錄</td>
+      </tr>
+{% for n in exetest1 %}
+      <tr>
+         <th>{{n.vocabulary}}</th>
+         <th>{{n.history}}</th>
+      </tr>
+{% endfor %}
+  </table>
+         </td>
+         <td>
+  <table>
+      <tr>
+         <td>練習統計</td>
+      </tr>
+{% for w in s %}
+      <tr>
+         <th>答對{{w}}次</th>
+      </tr>
+{% endfor %}
+  </table>
+         </td>
+         </tr>
+  </table>
+</div>
+    </section>
+</body>
+</html>

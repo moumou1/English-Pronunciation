@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+      <title>Test {{ vocc.number }}</title>
+      <meta charset='utf-8' />
+</head>
+<body>
+<script type="text/javascript">
+var infoBox; // 訊息 label
+var textBox; // 最終的辨識訊息 text input
+//var tempBox; // 中間的辨識訊息 text input
+var startStopButton; // 「辨識/停止」按鈕
+var final_transcript = ''; // 最終的辨識訊息的變數
+var recognizing = false; // 是否辨識中
+var compar = '';
+var final_answer = '';
+var answer;
+var correct=0;
+var final_score;
+
+function startButton(event,id,string_ans) {
+  infoBox = document.getElementById("info"+id); // 取得訊息控制項 infoBox
+  textBox = document.getElementById("text"+id); // 取得最終的辨識訊息控制項 textBox
+  answer = document.getElementById("an"+id);
+  compar = string_ans;  
+
+  startStopButton = document.getElementById("startStopButton"+id); // 取得「辨識/停止」這個按鈕控制項
+  langCombo = document.getElementById("langCombo"); // 取得「辨識語言」這個選擇控制項
+  if (recognizing) { // 如果正在辨識，則停止。
+    recognition.stop();
+  } else { // 否則就開始辨識
+    textBox.value = ''; // 清除最終的辨識訊息
+ 
+    final_transcript = ''; // 最終的辨識訊息變數
+    recognition.lang = langCombo.value; // 設定辨識語言
+    recognition.start(); // 開始辨識
+  }
+}
+
+  if (!('webkitSpeechRecognition' in window)) {  // 如果找不到 window.webkitSpeechRecognition 這個屬性
+  // 就是不支援語音辨識，要求使用者更新瀏覽器。 
+  infoBox.innerText = "本瀏覽器不支援語音辨識，請更換瀏覽器！(Chrome 25 版以上才支援語音辨識)";
+} else {
+  var recognition = new webkitSpeechRecognition(); // 建立語音辨識物件 webkitSpeechRecognition
+  recognition.continuous = false; // 設定連續辨識模式
+  recognition.interimResults = false; // 設定輸出中先結果。
+
+  recognition.onstart = function() { // 開始辨識
+    recognizing = true; // 設定為辨識中
+    startStopButton.value = "按此停止"; // 辨識中...按鈕改為「按此停止」。  
+    infoBox.innerText = "辨識中...";  // 顯示訊息為「辨識中」...
+  };
+
+	  recognition.onend = function() { // 辨識完成
+	    recognizing = false; // 設定為「非辨識中」
+	    startStopButton.value = "重新作答";  // 辨識完成...按鈕改為「開始辨識」。
+	    infoBox.innerText = ""; // 不顯示訊息
+	  };
+
+	  recognition.onresult = function(event) { // 辨識有任何結果時
+	//    var interim_transcript = ''; // 中間結果
+	    for (var i = event.resultIndex; i < event.results.length; ++i) { // 對於每一個辨識結果
+	      if (event.results[i].isFinal) { // 如果是最終結果
+		final_transcript += event.results[i][0].transcript; // 將其加入最終結果中
+	//     if(final_transcript=name) {
+	//     document.write(bingo);
+	      }
+	//else { // 否則
+	//        interim_transcript += event.results[i][0].transcript; // 將其加入中間結果中
+	//      }
+	    }
+	  if (final_transcript.trim().length > 0) // 如果有最終辨識文字
+		final_answer = final_transcript;
+		//answer.vale = final_transcript;
+		//answer=document.getElementById("an"+id);
+		//textBox.value = final_transcript; // 顯示最終辨識文字
+          //if(final_answer.match(compar=null))
+                //textBox.value="please try again!";
+          if (final_answer == compar){
+		textBox.value = 'Correct answer!';
+                answer.value = final_answer; 	
+		correct = correct+1;
+	  }
+          else{
+                textBox.value = 'Wrong';
+		answer.value = final_answer;
+          }   
+	//    if (interim_transcript.trim().length > 0) // 如果有中間辨識文字
+	//        tempBox.value = interim_transcript; // 顯示中間辨識文字
+	  };
+	}
+function score_final(){
+	final_score = document.getElementById("so");
+	final_score.value = correct;
+}	
+	</script>
+    <form action="" method="post"> {% csrf_token %}
+    {% if request.user.is_authenticated %}
+    <p align="center">使用者:{{request.user}}</p>
+    <input value="{{request.user}}" type="hidden" name="username"/>
+    {% else %}
+    {% endif %}
+    
+
+    {% if vocc.vocabulary_set.all %}
+<h1>Test {{ vocc.number }}</h1>
+    <p>此測驗共有{{ vocc.vocabulary_set.all|length }}個單字</p>
+<table border="1" style="width:100%">
+  <input value="{{ vocc.number }}" type="hidden" name="course">
+  {% for vo in vocc.vocabulary_set.all %} 
+  <tr> 
+    <td>{{ vo.numbers }}</td> 
+    <td>{{ vo.name }}</td>
+    <td>{{ vo.pos }}</td>		
+    <td>{{ vo.tran }}</td>
+    <td><input id="startStopButton{{ vo.numbers }}" type="submit" type="button" value="尚未作答" onclick="startButton(event,{{ vo.numbers }},'{{ vo.name }}')"/>
+    	<label id="info{{ vo.numbers }}"></label>
+        <input value="{{ vo.name }}" type="hidden" name="topic{{ vo.numbers }}"/>
+    	<input id="text{{ vo.numbers }}" type="text" size="60" name="result{{ vo.numbers }}"/>
+        <input id="an{{ vo.numbers }}" type="text" name="answer{{ vo.numbers }}"/>
+    </td>
+  </tr> 
+  {% endfor %}
+</table>
+    <input type="submit" type="button" value="完成測驗" onclick="score_final();location.href='http://www.google.com'"/>
+    <input value="{{ member.id }}" type="hidden" name="member">
+    <input id="so" type="hidden" name="score">
+    <input type="button" value="查看成績" onclick="location.href='/result/'">
+    </form>
+  {% else %}
+    <p>本課程沒有單字</p>
+  {% endif %}	  
+辨識語言：
+<select id="langCombo">
+    <option value="en-US">英文(美國)</option>
+</select>
+</body>
+</html>

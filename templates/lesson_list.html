@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+       <title>Lesson</title>
+       <meta charset='utf-8' />
+<style>
+table, th, td {
+    border:1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 10px;
+    text-align: center;
+}
+</style>
+</head> 
+<body>
+    {% for n in f %}
+    {{n.name}}
+    {% endfor %}    
+    {% if request.user.is_authenticated %}
+    <a href="/index/">首頁 </a>
+    <br><a href="/result/">發音紀錄&測驗結果</a>
+    <p align="center">使用者:{{request.user}}</p>
+    {% else %}
+    {% endif %}
+<h1>課程列表</h1>   
+<table align="right" style="width:100%">
+    <tr>
+	<th>選取</th>
+	<th>單字數量</th>
+        <th>發音練習</th>
+	<th>測驗</th>
+    </tr>
+    {% for f in lessons %}
+  <tr>
+    <td> <a href="/lessons/{{f.id}}/"> {{ f.name }} </a> </td>
+    <td> {{ f.quantity }} </td>
+    <td> <a href="/historys/{{f.id}}/"> {{ f.name }} </a></td>
+    <td> <a href="/stt/{{f.id}}/"> {{ f.name }} </a> </td>
+  </tr>
+    {% endfor %}
+</table>
+<p><a href="/comment/">建議</a></p>
+</body>
+</html> 

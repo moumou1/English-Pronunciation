@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       <title>login</title>
+       <meta charset='utf-8' />
+    </head>
+<body>
+    <form action="" method="post">
+	<label for="username">用戶名稱：</label>{% csrf_token %}
+	<input type="text" name="username"
+		value="{{username}}" id="username"> <br />
+	<label for="password">用戶密碼：</label>
+	<input type="password" name="password"
+		value="" id="password"> <br />
+	<input type="submit" value="登入" />
+    </form>  
+</body>
+</html>
